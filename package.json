@@ -35,10 +35,7 @@
     "requirejs": "^2.1.15"
   },
   "dependencies": {
-    "racer-browserchannel": "^0.3.0",
-    "racer-bundle": "^0.1.1",
-    "racer": "^0.6.0-alpha27",
-    "livedb-mongo": "^0.4.1",
-    "racer-middleware": "git://github.com/enjalot/racer-middleware.git"
+    "racer-middleware": "git://github.com/enjalot/racer-middleware.git",
+    "livedb-mongo": "^0.4.1"
   }
 }
