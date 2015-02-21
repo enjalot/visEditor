@@ -42,6 +42,8 @@ app.use("/racer", require("racer-middleware")({
   }
 }));
 
+///////////////////////////// END RACER
+
 // Serve static files.
 app.use('/', express.static(__dirname));
 
