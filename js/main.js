@@ -37,7 +37,7 @@ requirejs(["d3", "runtime", "/racer"], function (d3, Runtime, racer) {
       runtime.when("config", function(config) {
         var modelConfig = model.get(latestConfigPath);
         if(JSON.stringify(modelConfig) === JSON.stringify(config)) return;
-        model.set(latestConfigPath, config);
+        model.setDiffDeep(latestConfigPath, config);
       })
     });
   });
