@@ -8,9 +8,39 @@
 // will always update properly in the browser every time you save them.
 //
 // Curran Kelleher Feb 2015
+
+// Racer setup
+var liveDbMongo = require('livedb-mongo');
+var racerBrowserChannel = require('racer-browserchannel');
+var racer = require('racer');
+racer.use(require('racer-bundle'));
+
+/*
+var store = racer.createStore({
+  db: liveDbMongo('mongodb://localhost:27017/racer-vis?auto_reconnect', {safe: true})
+});
+*/
+
 var port = 8000,
     express = require('express'),
+    fs = require('fs'),
     app = express();
+
+///////////////////////////// BEGIN RACER
+// Racer + express integration
+//app.use(racerBrowserChannel(store))
+//app.use(store.modelMiddleware())
+
+app.use("/racer", require("racer-middleware")({
+  db: liveDbMongo('mongodb://localhost:27017/racer-vis?auto_reconnect', {safe: true}),
+  routes: {
+    'configs': function(req, model, done) {
+      model.subscribe("configs", function(err) { 
+        done();
+      });
+    }
+  }
+}));
 
 // Serve static files.
 app.use('/', express.static(__dirname));

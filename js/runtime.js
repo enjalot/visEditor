@@ -97,7 +97,7 @@ define(["model", "configDiff", "async", "lodash"], function (Model, configDiff, 
       if(plugin in runtime.plugins){
         callback(runtime.plugins[plugin]);
       } else {
-        require(["plugins/" + plugin], callback);
+        requirejs(["plugins/" + plugin], callback);
       }
     }
 
